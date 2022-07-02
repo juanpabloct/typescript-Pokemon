@@ -1,9 +1,8 @@
-import { api } from './conection';
-import axios from 'axios';
-import { changeData } from '../actions/actions';
-export function GetData(url:string, dispatch:any){
-    const data=axios.get(api+url).then(values=>dispatch(changeData({results:values.data})))
+import { api } from "./conection";
+import { changeData } from "../actions/actions";
+import axios from "axios";
+export function GetData(url: string, dispatch: any) {
+  const data = axios
+    .get(api + url)
+    .then((values) => dispatch(changeData({ results: values.data })));
 }
-
-
-

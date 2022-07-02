@@ -4,7 +4,7 @@ import { InputPassword } from "../components/Forms/passwordForm";
 
 export function Login() {
   const [valuesValidation, setValuesValidation] = useState({
-    login: { user: "", valid: "" },
+    login: { user: "", valid: false },
     password: { password: "", valid: "" },
   });
   return (
@@ -13,7 +13,10 @@ export function Login() {
         valuesValidation={valuesValidation}
         setValuesValidation={setValuesValidation}
       />
-      <InputPassword />
+      <InputPassword
+        valuesValidation={valuesValidation}
+        setValuesValidation={setValuesValidation}
+      />
     </form>
   );
 }
