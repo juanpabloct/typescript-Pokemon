@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ReduxState } from "types/store";
 
 export function Navbar() {
-  const { loginUser } = useSelector((data) => data);
+  const { loginUser } = useSelector((data: ReduxState) => data.pokemon);
   return (
     <nav style={{ display: "flex", justifyContent: "space-between" }}>
       <img

@@ -12,9 +12,10 @@ export function InputText({
       <TextField
         id="outlined-basic"
         label="Outlined"
-        error={!valid}
+        error={valid === "" ? false : !valid}
         variant="outlined"
-        helperText={!valid ? "email is not valid" : ""}
+        sx={{ width: "50%" }}
+        helperText={!valid && valid !== "" ? "email is not valid" : ""}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
             const { value }: any = e.target;

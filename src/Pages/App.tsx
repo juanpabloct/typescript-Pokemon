@@ -1,15 +1,13 @@
-import React from "react";
-import logo from "./logo.svg";
-import { SearchGeneration } from "../components/SearchGeneration";
-import { SearchName } from "../components/SearchName";
-import { Navbar } from "../components/navbar";
+import { Navbar } from "../components/Navbar";
+import { Filters } from "components/Filters";
+import { TargetData } from "components/ShowData/TargetData";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <SearchGeneration />
-      <SearchName />
+      <Filters />
+      <TargetData />
     </div>
   );
 }

@@ -1,2 +1,2 @@
-import pokemonsSlice from '../reducers/pokemon';
-export const {filterGeneration, changeData, filterName}=pokemonsSlice.actions
+import pokemonsSlice from "../reducers/pokemon";
+export const { pokemonFilter, changeData } = pokemonsSlice.actions;

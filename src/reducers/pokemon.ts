@@ -1,15 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { type } from "os";
+import { PokemonFilter, PokemonState } from "../types/store";
 
-type typeInitialState = {
-  filter: any;
-  data: object;
-  users: object;
-  loginUser: object;
-};
-let initialState: typeInitialState = {
-  filter: { generation: "", name: "" },
-  data: [],
+let initialState: PokemonState = {
+  filter: { generation: null, name: "" },
+  data: undefined,
   users: [],
   loginUser: { user: "", password: "" },
 };
@@ -18,16 +12,17 @@ const pokemonsSlice = createSlice({
   name: "Pokemons",
   initialState,
   reducers: {
-    filterGeneration: (state, action) => {
-      console.log(action.payload);
-
-      state.filter.generation = action.payload;
+    pokemonFilter: (
+      state,
+      action: {
+        payload: Partial<PokemonFilter>;
+        type: string;
+      }
+    ) => {
+      state.filter = { ...state.filter, ...action.payload };
     },
     changeData: (state, action) => {
       state.data = action.payload.results;
-    },
-    filterName: (state, action) => {
-      state.filter.name = action.payload;
     },
   },
 });

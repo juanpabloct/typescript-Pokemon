@@ -24,36 +24,33 @@ export function InputPassword({
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      {" "}
-      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={!show ? "text" : "password"}
-          value={password}
-          onChange={(e) => {
-            setValuesValidation((currem: any) => {
-              const copyData = { ...currem };
-              copyData.password.password = e.target.value;
-              return copyData;
-            });
-          }}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => setShow(!show)}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {show ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-        />
-      </FormControl>
-    </div>
+    <FormControl sx={{ m: 1, width: "50%" }} variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-password"
+        type={!show ? "text" : "password"}
+        value={password}
+        onChange={(e) => {
+          setValuesValidation((currem: any) => {
+            const copyData = { ...currem };
+            copyData.password.password = e.target.value;
+            return copyData;
+          });
+        }}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={() => setShow(!show)}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {show ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+        label="Password"
+      />
+    </FormControl>
   );
 }
