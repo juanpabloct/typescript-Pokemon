@@ -32,7 +32,7 @@ export function Login() {
           valuesValidation={valuesValidation}
           setValuesValidation={setValuesValidation}
         />
-        <Button>Ingresar</Button>
+        <Button disabled={false}>Ingresar</Button>
       </form>
     </div>
   );
