@@ -11,7 +11,7 @@ export function InputText({
     <>
       <TextField
         id="outlined-basic"
-        label="Outlined"
+        label="Email"
         error={valid === "" ? false : !valid}
         variant="outlined"
         sx={{ width: "50%" }}

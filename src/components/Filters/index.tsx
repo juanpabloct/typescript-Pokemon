@@ -24,9 +24,16 @@ export function Filters() {
   );
 
   return (
-    <>
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-evenly",
+        marginTop: "3rem",
+      }}
+    >
       <SearchGeneration onFilter={onFilter} />
       <SearchName onFilter={onFilter} />
-    </>
+    </div>
   );
 }

@@ -8,8 +8,6 @@ interface SearchGenerationProps {
 
 export function SearchGeneration({ onFilter }: SearchGenerationProps) {
   const pokemons = useSelector((state: ReduxState) => state.pokemon.data);
-  console.log(pokemons);
-
   return (
     <select
       name=""

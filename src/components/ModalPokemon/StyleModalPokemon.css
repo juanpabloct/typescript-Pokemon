@@ -1,0 +1,31 @@
+.container{
+    width: 100%;
+    position: sticky;
+    background-color: #ffff;
+    height: 100vh;
+    top: 0;
+    display: flex;
+}
+.containerChildren{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    height: 80%;
+    align-items: center;
+    background-color: yellow;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.TitlePokemon{
+    text-transform: capitalize;
+    text-align: center;
+    padding-top: "20px";
+    margin-bottom: 0;
+}
+.imagePokemon{
+    height: 30%;
+}
+.styleText{
+     text-transform: capitalize; 
+     text-align: center;
+}

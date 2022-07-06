@@ -1,23 +1,16 @@
-import { types } from '../types/types';
+import { types } from "../types/types";
 
-const initialState ={
- get_pokemon :[]
+const initialState = {
+  get_pokemon: [],
+};
 
-}
-
-const ListPokemonsReducer=(state =initialState,actions: any)=>{
-switch (actions.type) {
+const ListPokemonsReducer = (state = initialState, actions: any) => {
+  switch (actions.type) {
     case types.GET_POKEMEMONS:
-        return{
-            
-
-        };
-        break;
+      return {};
+      break;
 
     default:
-        break;
-}
-
-
-
-}
+      break;
+  }
+};
