@@ -36,8 +36,15 @@ export function ModalPokemon({
           alt=""
           className="imagePokemon"
         />
-        <div style={{ display: "flex" }}>
-          <div style={{ display: "flex", alignItems: "baseline" }}>
+        <div style={{ display: "flex", width: "100%" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              width: "100%",
+              justifyContent: "space-around",
+            }}
+          >
             <section>
               <h3>Base Experience:</h3>
               <p className="styleText">{valuesPokemon.base_experience}</p>
@@ -46,10 +53,12 @@ export function ModalPokemon({
               <div>
                 <h3>Held Items</h3>
                 {valuesPokemon.held_items.map((value, index) => {
+                  console.log(valuesPokemon);
+
                   return (
-                    <>
+                    <div key={index}>
                       <p className="styleText">{value.item.name}</p>
-                    </>
+                    </div>
                   );
                 })}
               </div>
