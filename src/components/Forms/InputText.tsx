@@ -5,8 +5,6 @@ export function InputText({
   setValuesValidation,
 }: object | any) {
   const { valid } = valuesValidation.login;
-  console.log(valid);
-
   return (
     <>
       <TextField

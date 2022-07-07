@@ -15,7 +15,6 @@ export function InputPassword({
   const refInput: any = useRef();
   const [show, setShow] = useState(false);
   const { password } = valuesValidation.password;
-  console.log(password);
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
