@@ -1,11 +1,11 @@
-import { Grid, Pagination } from "@mui/material";
-import { Box } from "@mui/system";
 import { changeDataPagination } from "actions/actions";
 import { ModalPokemon } from "components/ModalPokemon/ModalPokemon";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxState, TypePokemonData } from "types/store";
 import "./StyleTargetData.css";
+import { Box } from '@mui/system';
+import { Grid, Pagination } from '@mui/material';
 export function TargetData() {
   const dispatch = useDispatch();
   const { data } = useSelector((data: ReduxState) => data.pokemon);
@@ -13,9 +13,10 @@ export function TargetData() {
   const valores = useSelector(
     (data: ReduxState) => data.pokemon.showDataPagination
   );
+  
   const [openModal, setOpenModal] = useState(false);
   const [dataModal, setDataModal] = useState([]);
-
+  
   const pagination = (data.length / 12).toFixed();
   return (
     <Box sx={{ marginTop: "3rem" }}>
@@ -32,12 +33,12 @@ export function TargetData() {
         width={"80%"}
         gap={"2rem"}
         margin={"auto"}
-        justifyContent={"center"}
+        justifyContent={"space-around"}
       >
         {valores.map((value: TypePokemonData | any, index: number) => {
           return (
             <Grid
-              style={{ paddingLeft: "0px" }}
+              style={{ paddingLeft: "0px", width: "100%",            }}
               item
               key={index}
               xs={5}
@@ -48,7 +49,7 @@ export function TargetData() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                width: "100%!",
+                justifyContent:'space-around'
               }}
             >
               <h2 style={{ textTransform: "capitalize" }}>{value.name}</h2>

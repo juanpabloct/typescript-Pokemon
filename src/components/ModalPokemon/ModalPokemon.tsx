@@ -53,8 +53,8 @@ export function ModalPokemon({
               <div>
                 <h3>Held Items</h3>
                 {valuesPokemon.held_items.map((value, index) => {
-                  console.log(valuesPokemon);
-
+                  console.log(value.item.name);
+                  
                   return (
                     <div key={index}>
                       <p className="styleText">{value.item.name}</p>

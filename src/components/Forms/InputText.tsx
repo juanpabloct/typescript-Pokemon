@@ -1,6 +1,7 @@
-import { TextField } from "@mui/material";
+import { TextField } from '@mui/material';
+import { memo } from 'react';
 
-export function InputText({
+export default  memo(function InputText({
   valuesValidation,
   setValuesValidation,
 }: object | any) {
@@ -14,7 +15,7 @@ export function InputText({
         variant="outlined"
         sx={{ width: "50%" }}
         helperText={!valid && valid !== "" ? "email is not valid" : ""}
-        onKeyUp={(e) => {
+        onKeyUp={(e:any) => {
           if (e.key === "Enter") {
             const { value }: any = e.target;
             setValuesValidation((currem: any) => {
@@ -30,3 +31,4 @@ export function InputText({
     </>
   );
 }
+)

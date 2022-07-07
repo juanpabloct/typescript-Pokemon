@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import App from "../Pages/App";
 import { Login } from "../Pages/Login";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export function AllRoutes() {
   return (

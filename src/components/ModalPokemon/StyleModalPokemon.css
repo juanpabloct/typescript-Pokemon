@@ -8,7 +8,7 @@
 }
 .containerChildren{
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: auto;
     height: 80%;
     align-items: center;

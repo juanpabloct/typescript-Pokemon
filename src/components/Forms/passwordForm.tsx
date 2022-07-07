@@ -1,13 +1,12 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   FormControl,
   IconButton,
   InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
+  InputLabel, 
+  OutlinedInput
 } from "@mui/material";
 import { useRef, useState } from "react";
+import { VisibilityOff, Visibility } from '@mui/icons-material';
 export function InputPassword({
   valuesValidation,
   setValuesValidation,
@@ -29,7 +28,7 @@ export function InputPassword({
         id="outlined-adornment-password"
         type={!show ? "text" : "password"}
         value={password}
-        onChange={(e) => {
+        onChange={(e:any) => {
           setValuesValidation((currem: any) => {
             const copyData = { ...currem };
             copyData.password.password = e.target.value;

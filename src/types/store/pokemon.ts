@@ -12,19 +12,20 @@ export enum Generations {
 export interface PokemonFilter {
   generation: Generations | null;
   name: string;
+  type:string
 }
 
 export interface User {
   user: string;
   password: string;
-  accesPermission?: boolean;
+  name?:string
 }
 
 export interface PokemonState {
   filter: PokemonFilter;
   data?: TypePokemonData | any;
   users: User[];
-  loginUser: User;
+  accesUser: User;
   page: number;
   showDataPagination: TypePokemonData | any;
 }

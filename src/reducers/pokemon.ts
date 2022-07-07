@@ -1,31 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PokemonFilter, PokemonState } from "../types/store";
-const users = [
-  {
-    user: "Juanitoperez122003@gmail.com",
-    password: "12345678",
-    accesPermission: false,
-  },
-  {
-    user: "Juanitotorres2004@gmail.com",
-    password: "12345678",
-    accesPermission: false,
-  },
-];
+
 let initialState: PokemonState = {
-  filter: { generation: null, name: "" },
-  data: [...users],
+  filter: { generation: null, name: "", type:""},
   users: [
     {
       user: "Juanitoperez122003@gmail.com",
       password: "12345678",
+      name:"Juan Perez"
     },
     {
       user: "Juanitotorres2004@gmail.com",
       password: "12345678",
+      name:"Juan torres"
     },
   ],
-  loginUser: { user: "", password: "", accesPermission: false },
+  data:[],
+  accesUser: { user: "", password: ""},
   page: 1,
   showDataPagination: [],
 };
@@ -52,28 +43,23 @@ const pokemonsSlice = createSlice({
         type: string;
       }
     ) => {
+      console.log(action.payload);
+      
       state.filter = { ...state.filter, ...action.payload };
     },
-    changeData: (state, action) => {
+    changeData: (state, action) => {      
       if (action.payload.results.length > 0) {
         state.data = [...action.payload.results];
       } else {
-        console.log(state.data);
         state.data = action.payload.results;
         state.showDataPagination = [state.data];
       }
     },
     loginUser: (state, action) => {
-      const filtroEmail = state.users.filter((user) => {
-        return (
-          user.user === action.payload.email &&
-          user.password === action.payload.password
-        );
-      });
-      if (filtroEmail.length > 0) {
-        filtroEmail[0].accesPermission = true;
-        state.loginUser = filtroEmail[0];
-      }
+
+      state.accesUser=action.payload
+
+      
     },
   },
 });
