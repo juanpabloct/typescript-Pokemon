@@ -1,13 +1,23 @@
 import { Button } from "@mui/material";
+import { loginUser } from "actions/actions";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ValuesValidation } from "types/login/TypeLogin";
+import { PokemonState, ReduxState } from "types/store";
 import { InputText } from "../components/Forms/InputText";
 import { InputPassword } from "../components/Forms/passwordForm";
 
 export function Login() {
   const [valuesValidation, setValuesValidation] = useState({
-    login: { user: "", valid: "" },
+    login: { user: "", valid: false },
     password: { password: "" },
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { accesPermission } = useSelector(
+    (state: ReduxState) => state.pokemon.loginUser
+  );
   return (
     <div>
       <form
@@ -32,7 +42,24 @@ export function Login() {
           valuesValidation={valuesValidation}
           setValuesValidation={setValuesValidation}
         />
-        <Button disabled={false}>Ingresar</Button>
+        <Button
+          disabled={!valuesValidation.login.valid}
+          onClick={() => {
+            const { login, password } = valuesValidation;
+            dispatch(
+              loginUser({
+                email: login.user,
+                password: password.password,
+              })
+            );
+            console.log(accesPermission);
+            if (accesPermission) {
+              navigate("/");
+            }
+          }}
+        >
+          Login
+        </Button>
       </form>
     </div>
   );
