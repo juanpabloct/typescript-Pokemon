@@ -17,6 +17,7 @@ export interface PokemonFilter {
 export interface User {
   user: string;
   password: string;
+  accesPermission?: boolean;
 }
 
 export interface PokemonState {
