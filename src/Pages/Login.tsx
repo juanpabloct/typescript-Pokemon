@@ -1,12 +1,12 @@
-import { Button } from "@mui/material";
 import { loginUser } from "actions/actions";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { ValuesValidation } from "types/login/TypeLogin";
 import { PokemonState, ReduxState } from "types/store";
-import { InputText } from "../components/Forms/InputText";
+import  InputText  from "../components/Forms/InputText";
 import { InputPassword } from "../components/Forms/passwordForm";
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export function Login() {
   const [valuesValidation, setValuesValidation] = useState({
@@ -15,9 +15,12 @@ export function Login() {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { accesPermission } = useSelector(
-    (state: ReduxState) => state.pokemon.loginUser
+  const {accesUser}= useSelector(
+    (state: ReduxState) => state.pokemon
   );
+  console.log(accesUser);
+  
+  const {users}=useSelector((state: ReduxState)=>state.pokemon)
   return (
     <div>
       <form
@@ -45,15 +48,13 @@ export function Login() {
         <Button
           disabled={!valuesValidation.login.valid}
           onClick={() => {
-            const { login, password } = valuesValidation;
-            dispatch(
-              loginUser({
-                email: login.user,
-                password: password.password,
-              })
-            );
-            console.log(accesPermission);
-            if (accesPermission) {
+            const filter=users.filter((user)=>{
+              return user.user===valuesValidation.login.user && user.password
+              })              
+            if (filter.length>0) {
+              console.log(filter);
+              
+              dispatch(loginUser(filter[0]))
               navigate("/");
             }
           }}
