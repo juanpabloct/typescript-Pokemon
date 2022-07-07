@@ -13,10 +13,12 @@ export function Navbar() {
           alt=""
         />
         <div style={{ width: "20%" }}>
-          {loginUser.user.length === 0 && loginUser.password.length === 0 && (
+          {loginUser.user.length === 0 && loginUser.password.length === 0 ? (
             <h4>
               No has ingresado todavia <Link to={"/login"}>Ingresar</Link>
             </h4>
+          ) : (
+            <div>hola</div>
           )}
         </div>
       </nav>
