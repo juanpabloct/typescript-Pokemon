@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { ReduxState } from "types/store";
+import { Link } from 'react-router-dom';
 
 export function Navbar() {
-  const { loginUser } = useSelector((data: ReduxState) => data.pokemon);
+  const { accesUser } = useSelector((data: ReduxState) => data.pokemon);
   return (
     <>
       <nav style={{ display: "flex", justifyContent: "space-between" }}>
@@ -13,12 +13,12 @@ export function Navbar() {
           alt=""
         />
         <div style={{ width: "20%" }}>
-          {loginUser.user.length === 0 && loginUser.password.length === 0 ? (
+          {accesUser.user.length === 0 && accesUser.password.length === 0 ? (
             <h4>
               No has ingresado todavia <Link to={"/login"}>Ingresar</Link>
             </h4>
           ) : (
-            <div>hola</div>
+            <div>{accesUser.name}</div>
           )}
         </div>
       </nav>
