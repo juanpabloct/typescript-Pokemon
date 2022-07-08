@@ -13,8 +13,9 @@ const persistConfig = {
 const allReducers = combineReducers({
   pokemon: pokemonsSlice.reducer,
 });
-
-export const store = configureStore<ReduxState>({
-  reducer: allReducers,
+const persistenceReducer=persistReducer(persistConfig, allReducers)
+export const store = configureStore({
+  reducer: persistenceReducer,
   middleware: [thunk],
 });
+export const dataStore=persistStore(store)
