@@ -6,7 +6,6 @@ export function ModalPokemon({
   openModal,
 }: TypePokemonData | any) {
   const valuesPokemon: TypePokemonData = pokemon;
-  console.log(valuesPokemon);
 
   return (
     <div className="container">
@@ -53,8 +52,6 @@ export function ModalPokemon({
               <div>
                 <h3>Held Items</h3>
                 {valuesPokemon.held_items.map((value, index) => {
-                  console.log(value.item.name);
-                  
                   return (
                     <div key={index}>
                       <p className="styleText">{value.item.name}</p>

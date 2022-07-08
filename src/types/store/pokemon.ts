@@ -9,16 +9,31 @@ export enum Generations {
   viii = "viii",
 }
 
+export interface IAppState {
+  authentication?: IAuthenticationState;
+  extras: {
+    loading: boolean;
+  };
+}
+export interface IAuthenticationState {
+  token: string;
+  expires: number;
+  user?: {
+    name: string;
+    email: string;
+  };
+}
+
 export interface PokemonFilter {
-  generation: Generations | null;
+  generation: Generations | string;
   name: string;
-  type:string
+  type: string | any;
 }
 
 export interface User {
   user: string;
   password: string;
-  name?:string
+  name?: string;
 }
 
 export interface PokemonState {

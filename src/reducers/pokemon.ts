@@ -2,21 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PokemonFilter, PokemonState } from "../types/store";
 
 let initialState: PokemonState = {
-  filter: { generation: null, name: "", type:""},
+  filter: { generation: "", name: "", type: "" },
   users: [
     {
       user: "Juanitoperez122003@gmail.com",
       password: "12345678",
-      name:"Juan Perez"
+      name: "Juan Perez",
     },
     {
       user: "Juanitotorres2004@gmail.com",
       password: "12345678",
-      name:"Juan torres"
+      name: "Juan torres",
     },
   ],
-  data:[],
-  accesUser: { user: "", password: ""},
+  data: [],
+  accesUser: { user: "", password: "" },
   page: 1,
   showDataPagination: [],
 };
@@ -43,11 +43,9 @@ const pokemonsSlice = createSlice({
         type: string;
       }
     ) => {
-      console.log(action.payload);
-      
       state.filter = { ...state.filter, ...action.payload };
     },
-    changeData: (state, action) => {      
+    changeData: (state, action) => {
       if (action.payload.results.length > 0) {
         state.data = [...action.payload.results];
       } else {
@@ -56,10 +54,11 @@ const pokemonsSlice = createSlice({
       }
     },
     loginUser: (state, action) => {
-
-      state.accesUser=action.payload
-
-      
+      state.accesUser = action.payload;
+    },
+    showDataPagina: (state, action) => {
+      state.showDataPagination = action.payload;
+      console.log(state.showDataPagination);
     },
   },
 });
