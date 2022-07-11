@@ -31,7 +31,7 @@ export function ModalPokemon({
         </div>
         <h2 className="TitlePokemon">{valuesPokemon.name}</h2>
         <img
-          src={valuesPokemon.sprites.back_default}
+          src={valuesPokemon.sprites?.back_default}
           alt=""
           className="imagePokemon"
         />
@@ -54,7 +54,7 @@ export function ModalPokemon({
                 {valuesPokemon.held_items.map((value, index) => {
                   return (
                     <div key={index}>
-                      <p className="styleText">{value.item.name}</p>
+                      <p className="styleText">{value?.item?.name}</p>
                     </div>
                   );
                 })}

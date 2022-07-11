@@ -54,7 +54,7 @@ export function TargetData() {
             >
               <h2 style={{ textTransform: "capitalize" }}>{value.name}</h2>
               <img
-                src={value.sprites.back_default}
+                src={value.sprites?.back_default}
                 alt=""
                 style={{ width: "70%" }}
               />

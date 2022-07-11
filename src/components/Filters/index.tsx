@@ -1,4 +1,4 @@
-import { pokemonFilter, showDataPagina } from "actions/actions";
+import { changeData, pokemonFilter, showDataPagina } from "actions/actions";
 import { useGetData } from "conection/useGetData";
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,16 +36,16 @@ export function Filters() {
           };
           data();
         } else {
-          const typeData: any = [];
           data.map((state: any) => {
             return state.types.map((type: any) => {
+              console.log(type.type, value.type);
+
               if (type.type.name === value.type) {
-                typeData.push(state);
+                dispatch(changeData({ results: state }));
                 return state;
               }
             });
           });
-          dispatch(showDataPagina(typeData));
         }
       }
     },
