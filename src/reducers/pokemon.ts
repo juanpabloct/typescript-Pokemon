@@ -47,7 +47,16 @@ const pokemonsSlice = createSlice({
     },
     changeData: (state, action) => {
       if (action.payload.results.length > 0) {
-        state.data = [...action.payload.results];
+        if (
+          state.filter.generation.length > 0 &&
+          state.filter.type.length > 0
+        ) {
+          state.data = [...action.payload.results];
+          state.showDataPagination.push(action.payload.results);
+        } else {
+          console.log(action.payload.results);
+          state.data = [...action.payload.results];
+        }
       } else {
         state.data = action.payload.results;
         state.showDataPagination = [state.data];

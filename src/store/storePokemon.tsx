@@ -2,20 +2,32 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import pokemonsSlice from "../reducers/pokemon";
 import { ReduxState } from "../types/store";
 
-import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import localforage from "localforage";
+import { PersistConfig, persistReducer, persistStore } from "redux-persist";
+import { PersistPartial } from "redux-persist/lib/persistReducer";
 import thunk from "redux-thunk";
 
-const persistConfig = {
+const storage = localforage.createInstance({
+  name: "redux",
+  driver: localforage.INDEXEDDB,
+});
+
+const persistConfig: PersistConfig<ReduxState> = {
   key: "root",
   storage,
 };
-const allReducers = combineReducers({
+
+const allReducers = combineReducers<ReduxState>({
   pokemon: pokemonsSlice.reducer,
 });
-const persistenceReducer=persistReducer(persistConfig, allReducers)
-export const store = configureStore({
+
+const persistenceReducer = persistReducer<ReduxState>(
+  persistConfig,
+  allReducers
+);
+
+export const store = configureStore<ReduxState & PersistPartial>({
   reducer: persistenceReducer,
   middleware: [thunk],
 });
-export const dataStore=persistStore(store)
+export const dataStore = persistStore(store);
