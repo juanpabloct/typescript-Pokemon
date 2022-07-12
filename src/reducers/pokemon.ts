@@ -17,7 +17,7 @@ let initialState: PokemonState = {
   ],
   data: [],
   accesUser: { user: "", password: "" },
-  page: 1,
+  page: { page: 1, limit: 0 },
   showDataPagination: [],
 };
 
@@ -26,14 +26,24 @@ const pokemonsSlice = createSlice({
   initialState,
   reducers: {
     changeDataPagination: (state, action) => {
-      state.page = action.payload.page;
-      if (state.page === 1) {
-        const copyData = state.data.slice(0, 12);
-        state.showDataPagination = copyData;
+      const pagination = (state.data.length / 12).toFixed();
+      state.page.page = action.payload.page;
+      if (state.page.page === 1) {
+        if (action.payload.results) {
+          const copyData = action.payload.results.slice(0, 12);
+          state.showDataPagination = copyData;
+          state.page.limit = +(copyData.length / 12).toFixed();
+        } else {
+          const copyData = state.data.slice(0, 12);
+          state.showDataPagination = copyData;
+          state.page.limit = +pagination;
+        }
       } else {
-        const endCopy = state.page * 12;
+        const endCopy = state.page.page * 12;
         const copyData = state.data.slice(endCopy - 12, endCopy);
+        const pagination = (state.data.length / 12).toFixed();
         state.showDataPagination = copyData;
+        state.page.limit = +pagination;
       }
     },
     pokemonFilter: (
@@ -51,10 +61,11 @@ const pokemonsSlice = createSlice({
           state.filter.generation.length > 0 &&
           state.filter.type.length > 0
         ) {
-          state.data = [...action.payload.results];
+          const { results } = action.payload;
+          console.log(action.payload.results);
+          state.data = results;
           state.showDataPagination.push(action.payload.results);
         } else {
-          console.log(action.payload.results);
           state.data = [...action.payload.results];
         }
       } else {
@@ -67,7 +78,6 @@ const pokemonsSlice = createSlice({
     },
     showDataPagina: (state, action) => {
       state.showDataPagination = action.payload;
-      console.log(state.showDataPagination);
     },
   },
 });
