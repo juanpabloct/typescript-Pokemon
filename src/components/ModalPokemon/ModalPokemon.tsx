@@ -4,12 +4,16 @@ export function ModalPokemon({
   pokemon,
   setOpenModal,
   openModal,
+  imgType,
 }: TypePokemonData | any) {
   const valuesPokemon: TypePokemonData = pokemon;
 
   return (
     <div className="container">
-      <div className="containerChildren">
+      <div
+        className="containerChildren"
+        style={{ backgroundColor: imgType.background }}
+      >
         <div
           style={{ display: "flex", width: "100%", justifyContent: "flex-end" }}
         >
@@ -29,12 +33,39 @@ export function ModalPokemon({
             X
           </span>
         </div>
-        <h2 className="TitlePokemon">{valuesPokemon.name}</h2>
-        <img
-          src={valuesPokemon.sprites?.back_default}
-          alt=""
-          className="imagePokemon"
-        />
+        <div
+          style={{
+            backgroundImage: `url(${imgType.img})`,
+            backgroundSize: "cover",
+            height: "14rem",
+            width: "100%",
+            paddingTop: "0px",
+            backgroundPositionX: "center",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+        ></div>
+        <div
+          style={{
+            marginTop: "1rem",
+            width: "80%",
+            display: "flex",
+            backgroundColor: "white",
+            borderRadius: "20px",
+            position: "relative",
+            top: "-5rem",
+          }}
+        >
+          <img
+            src={valuesPokemon.sprites?.back_default}
+            alt=""
+            style={{
+              width: "50%",
+              margin: "auto",
+            }}
+            className="imagePokemon"
+          />
+        </div>
         <div style={{ display: "flex", width: "100%" }}>
           <div
             style={{
@@ -63,15 +94,20 @@ export function ModalPokemon({
             <section>
               <h3>Types</h3>
               {valuesPokemon.types.map((value, index) => {
-                return <p className="styleText">{value.type.name}</p>;
+                return (
+                  <p className="styleText" key={index}>
+                    {value.type.name}
+                  </p>
+                );
               })}
             </section>
             <section>
               <h3 className="styleText">base Stat :</h3>
               <div style={{ height: "8rem", overflow: "auto" }}>
-                {valuesPokemon.stats.map((stat: Stat) => {
+                {valuesPokemon.stats.map((stat: Stat, index) => {
                   return (
                     <div
+                      key={index}
                       style={{
                         display: "flex",
                         alignItems: "center",

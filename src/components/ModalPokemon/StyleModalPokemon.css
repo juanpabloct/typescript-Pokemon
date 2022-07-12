@@ -1,18 +1,15 @@
 .container{
     width: 100%;
     position: sticky;
-    background-color: #ffff;
-    height: 100vh;
     top: 0;
     display: flex;
 }
 .containerChildren{
     display: flex;
-    width: 100%;
+    width: 70%;
     margin: auto;
     height: 80%;
     align-items: center;
-    background-color: yellow;
     flex-direction: column;
     border-radius: 10px;
 }
