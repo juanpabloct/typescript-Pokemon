@@ -7,9 +7,11 @@ interface SearchGenerationProps {
 }
 
 export function SearchGeneration({ onFilter }: SearchGenerationProps) {
-  const pokemons = useSelector((state: ReduxState) => state.pokemon.data);
   return (
     <select
+      style={{
+        zIndex: "30",
+      }}
       name=""
       id=""
       onChange={({ target: { value } }) => {

@@ -27,6 +27,9 @@ export function SearchTypes({ onFilter }: any) {
   return (
     <select
       value={selection}
+      style={{
+        zIndex: "30",
+      }}
       onChange={(e) => {
         setSelection(e.target.value);
         onFilter({ type: e.target.value });

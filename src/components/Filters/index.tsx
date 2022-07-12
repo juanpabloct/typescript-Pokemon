@@ -1,13 +1,13 @@
-import { changeData, pokemonFilter, showDataPagina } from "actions/actions";
+import { changeDataPagination, pokemonFilter } from "actions/actions";
 import { useGetData } from "conection/useGetData";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchGeneration } from "./SearchGeneration";
 import { SearchName } from "./SearchName";
 import { OnFilter } from "./types";
 import { SearchTypes } from "./SearchType";
 import { client } from "../../conection/client";
-import { ReduxState, TypePokemonData } from "types/store";
+import { ReduxState } from "types/store";
 
 export function Filters() {
   const dispatch = useDispatch();
@@ -27,8 +27,6 @@ export function Filters() {
         if (value.type?.length > 0 && filter.generation?.length === 0) {
           const url: string = `type/${value.type}`;
           const data = async () => {
-            console.log();
-
             const getTypePokemon: any = await client
               .get(url)
               .then((values) => values.data.pokemon);
@@ -36,16 +34,17 @@ export function Filters() {
           };
           data();
         } else {
-          data.map((state: any) => {
-            return state.types.map((type: any) => {
-              console.log(type.type, value.type);
-
+          const allFilters: any = [];
+          data.map((state: any, index: number) => {
+            return state?.types?.forEach((type: any): any => {
               if (type.type.name === value.type) {
-                dispatch(changeData({ results: state }));
-                return state;
+                allFilters.push(state);
               }
             });
           });
+          if (allFilters.length > 0) {
+            dispatch(changeDataPagination({ page: 1, results: allFilters }));
+          }
         }
       }
     },
