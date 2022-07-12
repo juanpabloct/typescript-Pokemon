@@ -41,7 +41,7 @@ export interface PokemonState {
   data?: TypePokemonData | any;
   users: User[];
   accesUser: User;
-  page: number;
+  page: { page: number; limit: number };
   showDataPagination: TypePokemonData | any;
 }
 
