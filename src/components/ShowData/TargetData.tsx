@@ -59,7 +59,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
                 xs={5}
                 md={3}
                 sx={{
-                  backgroundColor: onlyTypeArray.background,
+                  backgroundColor: onlyTypeArray?.backgroundTarget,
                   borderRadius: "8px",
                   display: "flex",
                   flexDirection: "column",
@@ -69,9 +69,10 @@ export function TargetData({ openModal, setOpenModal }: any) {
               >
                 <div
                   style={{
-                    backgroundImage: `url(${onlyTypeArray.img})`,
-                    backgroundSize: "cover",
-                    height: "4rem",
+                    backgroundImage: `url(${onlyTypeArray?.img})`,
+                    backgroundSize: "100% 100%",
+                    height: "8rem",
+                    backgroundRepeat:"no-repeat",
                     width: "100%",
                     paddingTop: "0px",
                     backgroundPositionX: "center",
@@ -89,7 +90,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
                     height: "70%",
                     display: "flex",
                     justifyContent: "center",
-                    marginTop: "3rem",
+                    marginTop: "5rem",
                     zIndex: "30",
                   }}
                 >
@@ -98,7 +99,6 @@ export function TargetData({ openModal, setOpenModal }: any) {
                     alt=""
                     style={{
                       width: "100%",
-                      transform: "scale(1.3)",
                     }}
                   />
                 </div>
@@ -118,7 +118,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
                     setOpenModal((currem: boolean) => !currem);
                     setDataModal(value);
                   }}
-                  style={{ fontFamily: "Inknut Antiqua", fontSize: "1rem" }}
+                  style={{ fontFamily: "Inknut Antiqua", fontSize: "1rem", backgroundColor:onlyTypeArray?.backgroundButton}}
                 >
                   Show More
                 </button>
@@ -127,7 +127,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
           })}
         </Grid>
       )}
-      <Pagination
+     {!openModal&& <Pagination
         disabled={openModal}
         style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}
         count={page.limit}
@@ -135,7 +135,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
         onChange={(e: any) => {
           dispatch(changeDataPagination({ page: +e.target.outerText }));
         }}
-      />
+      />}
     </Box>
   );
 }
