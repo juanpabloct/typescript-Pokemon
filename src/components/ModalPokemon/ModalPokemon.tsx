@@ -7,12 +7,13 @@ export function ModalPokemon({
   imgType,
 }: TypePokemonData | any) {
   const valuesPokemon: TypePokemonData = pokemon;
-
+  console.log(pokemon);
+  
   return (
-    <div className="container">
+    <div className="container" style={{marginBottom:"30px"}}>
       <div
         className="containerChildren"
-        style={{ backgroundColor: imgType.background }}
+        style={{ backgroundColor: imgType.backgroundTarget }}
       >
         <div
           style={{ display: "flex", width: "100%", justifyContent: "flex-end" }}
@@ -40,22 +41,23 @@ export function ModalPokemon({
             height: "14rem",
             width: "100%",
             paddingTop: "0px",
-            backgroundPositionX: "center",
+            backgroundPosition: "center",
             borderTopLeftRadius: "10px",
             borderTopRightRadius: "10px",
           }}
-        ></div>
+        >
+        </div>
         <div
           style={{
             marginTop: "1rem",
-            width: "80%",
+            width: "50%",
             display: "flex",
             backgroundColor: "white",
             borderRadius: "20px",
             position: "relative",
             top: "-5rem",
           }}
-        >
+          >
           <img
             src={valuesPokemon.sprites?.back_default}
             alt=""
@@ -64,8 +66,9 @@ export function ModalPokemon({
               margin: "auto",
             }}
             className="imagePokemon"
-          />
+            />
         </div>
+            <h2 style={{margin:0, textTransform:"capitalize"}}>{valuesPokemon.name}</h2>
         <div style={{ display: "flex", width: "100%" }}>
           <div
             style={{
@@ -75,35 +78,9 @@ export function ModalPokemon({
               justifyContent: "space-around",
             }}
           >
-            <section>
-              <h3>Base Experience:</h3>
-              <p className="styleText">{valuesPokemon.base_experience}</p>
-            </section>
-            <section>
-              <div>
-                <h3>Held Items</h3>
-                {valuesPokemon.held_items.map((value, index) => {
-                  return (
-                    <div key={index}>
-                      <p className="styleText">{value?.item?.name}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-            <section>
-              <h3>Types</h3>
-              {valuesPokemon.types.map((value, index) => {
-                return (
-                  <p className="styleText" key={index}>
-                    {value.type.name}
-                  </p>
-                );
-              })}
-            </section>
-            <section>
+            <section style={{width:"100%"}}>
               <h3 className="styleText">base Stat :</h3>
-              <div style={{ height: "8rem", overflow: "auto" }}>
+              <div style={{ height: "8rem", display:"flex", justifyContent:"space-around"}}>
                 {valuesPokemon.stats.map((stat: Stat, index) => {
                   return (
                     <div
