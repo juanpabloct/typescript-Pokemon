@@ -82,7 +82,6 @@ export function Login() {
                 );
               });
               if (filter.length > 0) {
-                console.log(filter);
 
                 dispatch(loginUser(filter[0]));
                 setUserValid(true);
