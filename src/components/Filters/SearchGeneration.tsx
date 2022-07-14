@@ -1,17 +1,15 @@
+import { fontSize } from "@mui/system";
 import { useSelector } from "react-redux";
 import { Generations, ReduxState } from "types/store";
 import { OnFilter } from "./types";
-
+import "./styles/filters.css"
 interface SearchGenerationProps {
   onFilter: OnFilter;
 }
 
 export function SearchGeneration({ onFilter }: SearchGenerationProps) {
   return (
-    <select
-      style={{
-        zIndex: "30",
-      }}
+    <select className="filter"
       name=""
       id=""
       onChange={({ target: { value } }) => {

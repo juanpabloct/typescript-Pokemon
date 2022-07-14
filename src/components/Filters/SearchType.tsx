@@ -1,35 +1,16 @@
 import { useState } from "react";
+import { typesPokemon } from "Variables";
+
+import "./styles/filters.css"
+
 export function SearchTypes({ onFilter }: any) {
-  const allTypes = [
-    "normal",
-    "fighting",
-    "flying",
-    "poison",
-    "ground",
-    "rock",
-    "bug",
-    "ghost",
-    "steel",
-    "fire",
-    "water",
-    "grass",
-    "electric",
-    "psychic",
-    "ice",
-    "dragon",
-    "dark",
-    "fairy",
-    "unknown",
-    "shadow",
-  ];
+
   const [selection, setSelection] = useState("");
 
   return (
     <select
       value={selection}
-      style={{
-        zIndex: "30",
-      }}
+      className="filter"
       onChange={(e) => {
         setSelection(e.target.value);
         onFilter({ type: e.target.value });
@@ -38,7 +19,7 @@ export function SearchTypes({ onFilter }: any) {
       <option value="" disabled>
         Select one
       </option>
-      {allTypes.map((type, index) => (
+      {typesPokemon.map((type, index) => (
         <option
           key={index}
           id=""

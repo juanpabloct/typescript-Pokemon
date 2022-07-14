@@ -10,6 +10,9 @@ export function SearchName({ onFilter }: SearchNameProps) {
       type={"text"}
       style={{
         zIndex: "30",
+        width:"18%",
+        borderRadius:"30px",
+        border:"none"
       }}
       onKeyDown={(e: any) => {
         if (e.key === "Enter") onFilter({ name: e.target.value });

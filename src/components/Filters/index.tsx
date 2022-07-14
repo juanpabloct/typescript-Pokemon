@@ -19,7 +19,6 @@ export function Filters() {
       dispatch(pokemonFilter(value));
       if (value.generation) {
         getData("generation/generation-" + value.generation);
-        console.log(value);
       } else if (!value.generation && value.name) {
         const url: string = `pokemon/${value.name}`;
         getData(url);
@@ -59,10 +58,10 @@ export function Filters() {
         justifyContent: "space-evenly",
         marginTop: "3rem",
       }}
-    >
+      >
+      <SearchName onFilter={onFilter} />
       <SearchGeneration onFilter={onFilter} />
       <SearchTypes onFilter={onFilter} />
-      <SearchName onFilter={onFilter} />
     </div>
   );
 }
