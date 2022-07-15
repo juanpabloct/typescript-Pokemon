@@ -7,7 +7,6 @@ export function ModalPokemon({
   imgType,
 }: TypePokemonData | any) {
   const valuesPokemon: TypePokemonData = pokemon;
-  console.log(pokemon);
 
   return (
     <div className="container">
