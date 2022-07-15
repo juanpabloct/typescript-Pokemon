@@ -1,6 +1,4 @@
-import { fontSize } from "@mui/system";
-import { useSelector } from "react-redux";
-import { Generations, ReduxState } from "types/store";
+import { Generations } from "types/store";
 import { OnFilter } from "./types";
 interface SearchGenerationProps {
   onFilter: OnFilter;
@@ -18,7 +16,7 @@ export function SearchGeneration({ onFilter }: SearchGenerationProps) {
       }}
     >
       <option disabled selected className="optionDisabled">
-        Select One
+        Search for Generation
       </option>
       <option value={Generations.i}>Generation 1</option>
       <option value={Generations.ii}>Generation 2</option>

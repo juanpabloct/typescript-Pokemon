@@ -14,7 +14,7 @@ export function SearchTypes({ onFilter }: any) {
       }}
     >
       <option value="" disabled>
-        Select one
+        Search For Type
       </option>
       {typesPokemon.map((type, index) => (
         <option
