@@ -14,7 +14,7 @@ export function ModalResponse({
   stateInitial,
 }: any) {
   const style = {
-    position: "absolute" as "absolute",
+    position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -34,20 +34,13 @@ export function ModalResponse({
     >
       {!userValid ? (
         <Box sx={style} style={{ backgroundColor: "white" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="containResponseModal">
             <ClearIcon fontSize="large" style={{ color: "red" }} />
             <span style={{ fontSize: "1.5rem" }}>
-              {" "}
               <strong> User Is not valid</strong>
             </span>
           </div>
-          <div style={{ display: "flex" }}>
+          <div className="containButton">
             <Button
               variant="contained"
               style={{ margin: "auto", marginTop: "3rem" }}
@@ -62,20 +55,14 @@ export function ModalResponse({
         </Box>
       ) : (
         <Box sx={style} style={{ backgroundColor: "white" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="containResponseModal">
             <CheckIcon fontSize="large" style={{ color: "green" }} />
             <span style={{ fontSize: "1.5rem" }}>
               {" "}
               <strong> Login Succes</strong>
             </span>
           </div>
-          <div style={{ display: "flex" }}>
+          <div className="containButton">
             <Button
               variant="contained"
               style={{ margin: "auto", marginTop: "3rem" }}

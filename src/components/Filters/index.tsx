@@ -8,6 +8,7 @@ import { OnFilter } from "./types";
 import { SearchTypes } from "./SearchType";
 import { client } from "../../conection/client";
 import { ReduxState } from "types/store";
+import "./styles/filters.css";
 
 export function Filters() {
   const dispatch = useDispatch();
@@ -51,14 +52,7 @@ export function Filters() {
   );
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-evenly",
-        marginTop: "3rem",
-      }}
-      >
+    <div className="containerFilter">
       <SearchName onFilter={onFilter} />
       <SearchGeneration onFilter={onFilter} />
       <SearchTypes onFilter={onFilter} />

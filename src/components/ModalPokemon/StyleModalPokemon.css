@@ -3,8 +3,9 @@
     position: sticky;
     top: 0;
     display: flex;
+    margin-bottom: "3rem";
 }
-.containerChildren{
+.containerModal{
     display: flex;
     width: 70%;
     margin: auto;
@@ -19,8 +20,68 @@
     padding-top: "20px";
     margin-bottom: 0;
 }
-.imagePokemon{
+
+.containButtonExit{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.containButtonExit >.exit{
+    font-weight:600;
+    position: absolute;
+    font-size: 1.6rem;
+    margin-right: 1rem;
+    margin-top: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.containFontImage{
+    background-size: cover;
+    height: 14rem;
+    width: 100%;
+    padding-top: 0px;
+    background-position: center center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.containModalImage{
+    margin-top: 1rem;
+    width: 50%;
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    top: -5rem;
+}
+.containModalImage>.imagePokemon{
     height: 30%;
+    width:50%;
+    margin:auto
+}
+.stylePokemon{
+    margin: 0;
+    text-transform: capitalize;
+}
+.containInfoPokemon{
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    justify-content: space-around;
+}
+.childrenInfoPokemon{
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+}
+.children{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.children>h3{
+    text-transform: capitalize;
+    display: inline;
 }
 .styleText{
      text-transform: capitalize; 

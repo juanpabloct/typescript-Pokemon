@@ -2,13 +2,13 @@ import { loginUser } from "actions/actions";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxState } from "types/store";
-import InputText from "../components/Forms/InputText";
-import { InputPassword } from "../components/Forms/passwordForm";
+import InputText from "../../components/Forms/InputText";
+import { InputPassword } from "../../components/Forms/passwordForm";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { ModalResponse } from "components/Forms/ModalResponse";
-
+import "./login.css";
 export function Login() {
   interface valuesValidation {
     login: {
@@ -50,15 +50,7 @@ export function Login() {
         //Section of the login
       }
       <Box sx={{ width: "80%", margin: "auto" }}>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            marginTop: "2rem",
-          }}
-        >
+        <form onSubmit={(e) => e.preventDefault()} className="form">
           <img
             src="https://media.vandal.net/i/1200x630/10-2021/2021105724573_1.jpg"
             style={{ maxHeight: "8rem" }}
@@ -82,7 +74,6 @@ export function Login() {
                 );
               });
               if (filter.length > 0) {
-
                 dispatch(loginUser(filter[0]));
                 setUserValid(true);
               }

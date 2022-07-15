@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { typesPokemon } from "Variables";
 
-import "./styles/filters.css"
-
 export function SearchTypes({ onFilter }: any) {
-
   const [selection, setSelection] = useState("");
 
   return (
