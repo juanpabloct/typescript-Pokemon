@@ -25,12 +25,12 @@ export function ModalPokemon({
             X
           </span>
         </div>
-        <div
+        <figure
           className="containFontImage"
           style={{
             backgroundImage: `url(${imgType.img})`,
           }}
-        ></div>
+        ></figure>
         <div className="containModalImage">
           <img
             src={valuesPokemon.sprites?.back_default}

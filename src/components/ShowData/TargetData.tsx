@@ -67,48 +67,19 @@ export function TargetData({ openModal, setOpenModal }: any) {
                   justifyContent: "space-around",
                 }}
               >
-                <div
+                <figure className="backgroundImage"
                   style={{
                     backgroundImage: `url(${onlyTypeArray?.img})`,
-                    backgroundSize: "100% 100%",
-                    height: "8rem",
-                    backgroundRepeat:"no-repeat",
-                    width: "100%",
-                    paddingTop: "0px",
-                    backgroundPositionX: "center",
-                    position: "absolute",
-                    top: "0",
-                    borderTopLeftRadius: "10px",
-                    borderTopRightRadius: "10px",
                   }}
-                ></div>
-                <div
-                  style={{
-                    borderRadius: "48%",
-                    backgroundColor: "white",
-                    width: "60%",
-                    height: "70%",
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "5rem",
-                    zIndex: "30",
-                  }}
+                ></figure>
+                <figure className="containImgMain"
                 >
                   <img
                     src={value.sprites?.back_default}
                     alt=""
-                    style={{
-                      width: "100%",
-                    }}
                   />
-                </div>
-                <h2
-                  style={{
-                    textTransform: "capitalize",
-                    fontSize: "1rem",
-                    fontFamily: "Inknut Antiqua",
-                  }}
-                >
+                </figure>
+                <h2 className="titlePokemon">
                   {value.name}
                 </h2>
                 <button
@@ -118,7 +89,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
                     setOpenModal((currem: boolean) => !currem);
                     setDataModal(value);
                   }}
-                  style={{ fontFamily: "Inknut Antiqua", fontSize: "1rem", backgroundColor:onlyTypeArray?.backgroundButton}}
+                  style={{  backgroundColor:onlyTypeArray?.backgroundButton}}
                 >
                   Show More
                 </button>
@@ -127,15 +98,19 @@ export function TargetData({ openModal, setOpenModal }: any) {
           })}
         </Grid>
       )}
-     {!openModal&& <Pagination
-        disabled={openModal}
-        style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}
-        count={page.limit}
-        color="primary"
-        onChange={(e: any) => {
-          dispatch(changeDataPagination({ page: +e.target.outerText }));
-        }}
-      />}
+     {!openModal&& 
+     <div className="containPagination">
+        <Pagination
+          disabled={openModal}
+          style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}
+          count={page.limit}
+          color="primary"
+          onChange={(e: any) => {
+            dispatch(changeDataPagination({ page: +e.target.outerText }));
+          }}
+          />
+      </div>
+        }
     </Box>
   );
 }
