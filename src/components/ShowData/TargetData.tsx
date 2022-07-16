@@ -33,7 +33,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
           width={"80%"}
           gap={"2rem"}
           margin={"auto"}
-          justifyContent={"space-around"}
+          justifyContent={"space-around "}
         >
           {valores?.map((value: TypePokemonData | any, index: number) => {
             const typePokemon = value?.types.map((type: any) => {
