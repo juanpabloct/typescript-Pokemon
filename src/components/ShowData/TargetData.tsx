@@ -23,7 +23,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
     return prev;
   }, {});
   return (
-    <Box sx={{ marginTop: "3rem" }}>
+    <Box sx={{ marginTop: "3rem " }}>
       {openModal && (
         <ModalPokemon
           pokemon={dataModal}
