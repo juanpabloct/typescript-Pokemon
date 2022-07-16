@@ -15,7 +15,7 @@ export function SearchGeneration({ onFilter }: SearchGenerationProps) {
         onFilter({ generation });
       }}
     >
-      <option disabled selected className="optionDisabled">
+      <option disabled className="optionDisabled">
         Search for Generation
       </option>
       <option value={Generations.i}>Generation 1</option>

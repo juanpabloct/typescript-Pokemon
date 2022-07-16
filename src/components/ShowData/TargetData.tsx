@@ -36,81 +36,84 @@ export function TargetData({ openModal, setOpenModal }: any) {
           justifyContent={"space-around"}
         >
           {valores?.map((value: TypePokemonData | any, index: number) => {
-            const typePokemon = value.types.map((type: any) => {
+            const typePokemon = value?.types.map((type: any) => {
               const img = typesPokemonWithImg.filter((state) => {
                 return state.name === type.type.name;
               });
               return img;
             });
-            const onlyTypeArray = typePokemon.flat()[0];
 
-            return (
-              <Grid
-                style={{
-                  paddingLeft: "0px",
-                  width: "100%",
-                  zIndex: "30",
-                  paddingTop: "0px",
-                  position: "relative",
-                  borderRadius: "8px",
-                }}
-                item
-                key={index}
-                xs={5}
-                md={3}
-                sx={{
-                  backgroundColor: onlyTypeArray?.backgroundTarget,
-                  borderRadius: "8px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                }}
-              >
-                <figure className="backgroundImage"
+            if (typePokemon) {
+              const onlyTypeArray = typePokemon?.flat()[0];
+              console.log(onlyTypeArray);
+
+              return (
+                <Grid
                   style={{
-                    backgroundImage: `url(${onlyTypeArray?.img})`,
+                    paddingLeft: "0px",
+                    width: "100%",
+                    zIndex: "30",
+                    paddingTop: "0px",
+                    position: "relative",
+                    borderRadius: "8px",
                   }}
-                ></figure>
-                <figure className="containImgMain"
-                >
-                  <img
-                    src={value.sprites?.back_default}
-                    alt=""
-                  />
-                </figure>
-                <h2 className="titlePokemon">
-                  {value.name}
-                </h2>
-                <button
-                  className="buttonModal"
-                  onClick={() => {
-                    setImgType(onlyTypeArray);
-                    setOpenModal((currem: boolean) => !currem);
-                    setDataModal(value);
+                  item
+                  key={index}
+                  xs={5}
+                  md={3}
+                  sx={{
+                    backgroundColor: onlyTypeArray?.backgroundTarget,
+                    borderRadius: "8px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "space-around",
                   }}
-                  style={{  backgroundColor:onlyTypeArray?.backgroundButton}}
                 >
-                  Show More
-                </button>
-              </Grid>
-            );
+                  <figure
+                    className="backgroundImage"
+                    style={{
+                      backgroundImage: `url(${onlyTypeArray?.img})`,
+                    }}
+                  ></figure>
+                  <figure className="containImgMain">
+                    <img src={value?.sprites?.back_default} alt="" />
+                  </figure>
+                  <h2 className="titlePokemon">{value?.name}</h2>
+                  <button
+                    className="buttonModal"
+                    onClick={() => {
+                      setImgType(onlyTypeArray);
+                      setOpenModal((currem: boolean) => !currem);
+                      setDataModal(value);
+                    }}
+                    style={{ backgroundColor: onlyTypeArray?.backgroundButton }}
+                  >
+                    Show More
+                  </button>
+                </Grid>
+              );
+            }
           })}
         </Grid>
       )}
-     {!openModal&& 
-     <div className="containPagination">
-        <Pagination
-          disabled={openModal}
-          style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}
-          count={page.limit}
-          color="primary"
-          onChange={(e: any) => {
-            dispatch(changeDataPagination({ page: +e.target.outerText }));
-          }}
+      {!openModal && (
+        <div className="containPagination">
+          <Pagination
+            disabled={openModal}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "3rem",
+            }}
+            count={page.limit}
+            color="primary"
+            onChange={(e: any) => {
+              dispatch(changeDataPagination({ page: +e.target.outerText }));
+            }}
           />
-      </div>
-        }
+        </div>
+      )}
     </Box>
   );
 }

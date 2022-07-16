@@ -16,6 +16,8 @@ export function useGetData() {
 
       return data;
     } else if (url.includes("generation/generation-")) {
+      console.log(url);
+      debugger;
       const data: any = await client.get(url).then((values) => values.data);
       const allValues: any = [];
       data.pokemon_species.map((nombre: any, index: number) => {
