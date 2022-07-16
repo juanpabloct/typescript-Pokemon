@@ -1,0 +1,9 @@
+.containResponseModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.containButton{
+    display: flex;
+
+}

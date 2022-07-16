@@ -1,0 +1,44 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    z-index: 60;
+    background-color: rgb(13, 111, 167);
+}
+.nav >img{
+    height: 4rem;
+    margin-left: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+.containerMain{
+    width: 40%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.subtitleNabvar{
+    color: rgb(255, 255, 255);
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+
+/*Styles if the user is valid*/
+.contain_Navbar{
+    width: 80%;
+    height: 50%;
+    background-color: white;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    border-radius: 10px;}
+
+.contain_Navbar >h5{
+    margin-left: 2rem;
+}
+.contain_Navbar > img{
+    height: 2rem;
+}
