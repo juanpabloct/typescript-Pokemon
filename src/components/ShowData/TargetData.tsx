@@ -6,7 +6,7 @@ import { ReduxState, TypePokemonData } from "types/store";
 import "./StyleTargetData.css";
 import { Box } from "@mui/system";
 import { Grid, Pagination } from "@mui/material";
-import { typesPokemonWithImg } from "Variables";
+import { PokemonWithImage, typesPokemonWithImg } from "Variables";
 export function TargetData({ openModal, setOpenModal }: any) {
   const dispatch = useDispatch();
   const { page } = useSelector((data: ReduxState) => data.pokemon);
@@ -14,8 +14,14 @@ export function TargetData({ openModal, setOpenModal }: any) {
     (data: ReduxState) => data.pokemon.showDataPagination
   );
 
-  const [dataModal, setDataModal] = useState([]);
-  const [imgType, setImgType] = useState();
+  const [dataModal, setDataModal] = useState<any>([]);
+  const [imgType, setImgType] = useState<PokemonWithImage>();
+  const valueImages = typesPokemonWithImg.reduce<
+    Record<string, PokemonWithImage>
+  >((prev, curr) => {
+    prev[curr.name] = curr;
+    return prev;
+  }, {});
   return (
     <Box sx={{ marginTop: "3rem" }}>
       {openModal && (
@@ -35,11 +41,9 @@ export function TargetData({ openModal, setOpenModal }: any) {
           margin={"auto"}
           justifyContent={"space-around "}
         >
-          {valores?.map((value: TypePokemonData | any, index: number) => {
-            const typePokemon = value?.types.map((type: any) => {
-              const img = typesPokemonWithImg.filter((state) => {
-                return state.name === type.type.name;
-              });
+          {valores?.map((value: TypePokemonData, index: number) => {
+            const typePokemon = value?.types.map((type) => {
+              const img = valueImages[type.type.name];
               return img;
             });
 
