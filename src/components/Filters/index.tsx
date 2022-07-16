@@ -48,7 +48,7 @@ export function Filters() {
         }
       }
     },
-    [dispatch, getData, data, filter]
+    [dispatch, getData]
   );
 
   return (
