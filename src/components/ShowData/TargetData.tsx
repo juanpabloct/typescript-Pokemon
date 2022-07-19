@@ -22,6 +22,7 @@ export function TargetData({ openModal, setOpenModal }: any) {
     prev[curr.name] = curr;
     return prev;
   }, {});
+
   return (
     <Box sx={{ marginTop: "3rem " }}>
       {openModal && (
@@ -49,8 +50,6 @@ export function TargetData({ openModal, setOpenModal }: any) {
 
             if (typePokemon) {
               const onlyTypeArray = typePokemon?.flat()[0];
-              console.log(onlyTypeArray);
-
               return (
                 <Grid
                   style={{
